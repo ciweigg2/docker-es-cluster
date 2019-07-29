@@ -185,6 +185,25 @@ gateway.recover_after_nodes: 2
 
 * cluster.initial_master_nodes 集群中可以成为master节点的节点名，这里指定唯一的一个
 
+详细介绍elasticsearch.yml配置文件呀
+
+```
+cluster.name: es-cluster #指定es集群名
+node.name: xxxx #指定当前es节点名
+node.data: false #非数据节点
+node.master: false #非master节点
+node.attr.rack: r1 #自定义的属性,这是官方文档中自带的
+bootstrap.memory_lock: true #开启启动es时锁定内存
+network.host: 172.17.0.5 #当前节点的ip地址
+http.port: 9200 #设置当前节点占用的端口号，默认9200
+discovery.seed_hosts: ["172.17.0.3:9300","172.17.0.4:9300","172.17.0.2:9300"] #启动当前es节点时会去这个ip列表中去发现其他节点，此处不需配置自己节点的ip,这里支持ip和ip:port形式,不加端口号默认使用ip:9300去发现节点
+cluster.initial_master_nodes: ["node-1", "node-2", "node-3"] #可作为master节点初始的节点名称,tribe-node不在此列
+gateway.recover_after_nodes: 2 #设置集群中N个节点启动时进行数据恢复，默认为1。可选
+path.data: /path/to/path  #数据保存目录
+path.logs: /path/to/path #日志保存目录
+transport.tcp.port: 9300 #设置集群节点发现的端口
+```
+
 ### 使用说明
 
 1. 若想将此脚本使用到生产上，需要修改每个节点下的.env文件，将挂载数据、日志目录修改为启动es的集群的用户可读写的位置，可以通过`sudo chmod 777 -R 目录` 或 `sudo chown -R 当前用户名:用户组 目录` 来修改被挂载的目录权限
