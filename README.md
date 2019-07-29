@@ -61,6 +61,14 @@
 
 ## 各节点操作命令
 
+需要修改sysctl.conf添加vm.max_map_count
+
+```
+vi /etc/sysctl.conf
+vm.max_map_count=262144
+sysctl -p
+```
+
 **后台启动命令**均为`docker-compose up -d`
 
 **关闭命令**:
