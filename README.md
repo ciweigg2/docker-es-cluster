@@ -4,7 +4,7 @@
 
 更多说明详见我的博客<https://www.cnblogs.com/hellxz/p/docker_es_cluster.html>
 
-由于空文件夹提交会被忽略，所以把启动带的日志和连接节点信息也带进来了，使用前需要删除各数据目录下的文件，请保留数据目录和日志目录。
+由于空文件夹提交会被忽略，所以在文件夹下面创建了package.info，使用前需要删除各数据目录下的文件，请保留数据目录和日志目录。
 
 为了对比哪些需要删除，请参考如下目录结构（均需要保留，`.sh`后缀的脚本可以保留）
 
@@ -112,5 +112,3 @@ docker stop es-tribe es-data03 es-data02 es-data01 es-master
 > 如果你想让这些脚本有执行权限，不妨试试`sudo chmod +x *.sh`
 >
 > 这些脚本中没有使用sudo，如需要使用sudo才能启动docker,请添加当前用户到docker组
-
-**Enjoy.**
