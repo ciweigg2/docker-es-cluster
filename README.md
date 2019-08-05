@@ -168,7 +168,7 @@ node.name: master
 node.master: true
 node.data: false
 node.attr.rack: r1 
-bootstrap.memory_lock: true 
+bootstrap.memory_lock: false 
 http.port: 9200
 network.host: 10.2.114.110
 transport.tcp.port: 9300
@@ -193,7 +193,7 @@ node.name: xxxx #指定当前es节点名
 node.data: false #非数据节点
 node.master: false #非master节点
 node.attr.rack: r1 #自定义的属性,这是官方文档中自带的
-bootstrap.memory_lock: true #开启启动es时锁定内存
+bootstrap.memory_lock: false #开启启动es时锁定内存
 network.host: 172.17.0.5 #当前节点的ip地址
 http.port: 9200 #设置当前节点占用的端口号，默认9200
 discovery.seed_hosts: ["172.17.0.3:9300","172.17.0.4:9300","172.17.0.2:9300"] #启动当前es节点时会去这个ip列表中去发现其他节点，此处不需配置自己节点的ip,这里支持ip和ip:port形式,不加端口号默认使用ip:9300去发现节点
